@@ -11,9 +11,11 @@
 <div id="profiles"></div>
 </div>
 <script type="text/javascript">
-    IN.API.Connections("me")
-            .fields("firstName", "lastName", "industry","positions:(company)")
-            .result(displayProfiles);
+    function getCompanies(){
+        IN.API.Connections("me")
+                .fields("firstName", "lastName", "industry","positions:(company)")
+                .result(displayProfiles);
+    }
     function displayProfiles(profiles) {
         var members = profiles.values;
         for(i=0;i<members.length;i++){
