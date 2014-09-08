@@ -7,9 +7,20 @@
 <body>
 <div class="container">
 <script type="in/Login">
-Hello, <?js= firstName ?> <?js= lastName ?>.
+    IN.API.Connections("me")
+    .fields("firstName", "lastName", "industry","positions:(company)")
+    .result(displayProfiles);
 </script>
-  <div id="profiles"></div>
+<div id="profiles"></div>
 </div>
+<script type="text/javascript">
+    function displayProfiles(profiles) {
+        var members = profiles.values;
+        for(i=0;i<members.length;i++){
+            console.log(member.firstName);
+            console.log(member.positions.values[0].company);
+        }
+    }
+</script>
 </body>
 </html>
