@@ -42,6 +42,11 @@
      </script>
 
     <script type="text/javascript">
+        unique = function( arr ){
+            return _.uniq( _.collect( arr, function( x ){
+                return x;
+            }));
+        };
         // 2. Runs when the JavaScript framework is loaded
         function onLinkedInLoad() {
             IN.Event.on(IN, "auth", onLinkedInAuth);
@@ -61,14 +66,28 @@
                     "<p id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "</p>";*/
             var members = profiles.values;
             var companiesArray = new Array() ;
+            var space = " ";
+            var dot = "\.";
             for(i=0;i<members.length;i++){
                 var member = members[i];
                 if(member.positions.values!=null){
-                    companiesArray.push(member.positions.values[0].company.name);
-//                    console.log(member.firstName+","+member.positions.values[0].company.name);
+                    var companyName = member.positions.values[0].company.name.toLowerCase();
+                    var spaceReplaced = companyName.replace(new RegExp(space,'g'),"-");
+                    var finalName = spaceReplaced.replace(".","");
+                    companiesArray.push(finalName);
                 }
             }
-            console.log(companiesArray);
+            var counts = {};
+            var uniqueArray = unique(companiesArray);
+            for(var i = 0; i< companiesArray.length; i++) {
+                var num = companiesArray[i];
+                counts[num] = counts[num] ? counts[num]+1 : 1;
+            }
+            var intermediateJsonArray = new Array();
+            for(var j=0;j<uniqueArray.length;j++){
+               intermediateJsonArray.push({"name":uniqueArray[j],"count":counts[uniqueArray[j]]})
+            }
+            var resultArray = intermediateJsonArray.sort(function(a,b){return b.count - a.count;})
         }
     </script>
 </head>
