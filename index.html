@@ -60,8 +60,8 @@
             var members = profiles.values;
             for(i=0;i<members.length;i++){
                 var member = members[i];
-                if(member.positions!=null){
-                    console.log(member.firstName+","+member.positions.values[0].company);
+                if(member.positions.values!=null){
+                    console.log(member.firstName+","+member.positions.values[0].company.name);
                 }
             }
         }
