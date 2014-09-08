@@ -61,7 +61,9 @@
             for(i=0;i<members.length;i++){
                 var member = members[i];
                 console.log(member.firstName);
-                console.log(member.positions.values[0].company);
+                if(member.positions.values[0].company!=null){
+                    console.log(member.positions.values[0].company);
+                }
             }
         }
     </script>
