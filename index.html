@@ -58,12 +58,15 @@
             document.getElementById("profiles").innerHTML =
                     "<p id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "</p>";*/
             var members = profiles.values;
+            var companiesArray = new Array() ;
             for(i=0;i<members.length;i++){
                 var member = members[i];
                 if(member.positions.values!=null){
-                    console.log(member.firstName+","+member.positions.values[0].company.name);
+                    companiesArray.push(positions.values[0].company.name);
+//                    console.log(member.firstName+","+member.positions.values[0].company.name);
                 }
             }
+           console.log(companiesArray);
         }
     </script>
 </head>
