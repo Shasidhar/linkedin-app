@@ -27,12 +27,13 @@
             }));
         };
         // 2. Runs when the JavaScript framework is loaded
-        function onLinkedInLoad() {
+       /* function onLinkedInLoad() {
             IN.Event.on(IN, "auth", onLinkedInAuth);
-        }
+        }*/
 
         // 2. Runs when the viewer has authenticated
         function onLinkedInAuth() {
+            $("#loginbutton").remove();
             IN.API.Connections("me")
                     .fields("firstName", "lastName", "industry","positions:(company)")
                     .result(displayProfiles);
