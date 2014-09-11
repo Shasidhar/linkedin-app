@@ -15,7 +15,10 @@
     <script type="text/javascript">
     jQuery(document).ready(function () {
         $("#loginbutton").bind('click',function(){
-            IN.Event.on(IN, "auth", onLinkedInAuth);
+            IN.User.authorize();
+            IN.Event.on(IN, 'auth', function(){
+            onLinkedInAuth();
+            });
         });
     })
         unique = function( arr ){
