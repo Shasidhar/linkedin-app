@@ -39,7 +39,6 @@
     <script type="text/javascript" src="https://platform.linkedin.com/in.js">
      api_key:75h4v3j41fph8x
      onLoad: onLinkedInLoad
-     authorize: true
      </script>
 
     <script type="text/javascript">
@@ -97,7 +96,10 @@
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
 <body>
 <div id="profiles"></div>
-<div id="container" style="height:400px;">
+<div class="col-md-12">
+<div class="col-md-2"></div>
+<div id="container" class="col-md-8" style="min-height:80%;min-width:60%;">
+</div>  
 </div>
 </body>
 <script type="text/javascript">
@@ -130,7 +132,7 @@ function drawChart(input){
         },
         series: [{
             type: 'pie',
-            name: 'Browser share',
+            name: 'Company name',
             data: input
         }]
     });
