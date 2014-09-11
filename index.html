@@ -90,7 +90,7 @@
             }
             var resultArray = intermediateJsonArray.sort(function(a,b){return b.count - a.count;})
             var chartInput = resultArray.map(function(data){return [data.name,data.count];})
-            drawChart(input);
+            drawChart(chartInput);
         }
     </script>
 </head>
@@ -110,7 +110,7 @@ function drawChart(input){
             plotShadow: false
         },
         title: {
-            text: 'Browser market shares at a specific website, 2014'
+            text: 'Distribution of your connections company wise in LinkedIn'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
