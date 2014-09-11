@@ -71,7 +71,7 @@
             var dot = "\.";
             for(i=0;i<members.length;i++){
                 var member = members[i];
-                if(member.positions.values!=null){
+                if(member.positions!=undefined && member.positions.values.length>0){
                     var companyName = member.positions.values[0].company.name.toLowerCase();
                     var spaceReplaced = companyName.replace(new RegExp(space,'g'),"-");
                     var finalName = spaceReplaced.replace(".","");
