@@ -34,6 +34,7 @@
         // 2. Runs when the viewer has authenticated
         function onLinkedInAuth() {
             $("#loginbutton").remove();
+            $('#messagespan').html("Fetching your connection from LinkedIn");
             IN.API.Connections("me")
                     .fields("firstName", "lastName", "industry","positions:(company)")
                     .result(displayProfiles);
@@ -66,6 +67,7 @@
             }
             var resultArray = intermediateJsonArray.sort(function(a,b){return b.count - a.count;})
             var chartInput = resultArray.map(function(data){return [data.name,data.count];})
+            $('#messagespan').html("");
             drawChart(chartInput);
         }
     </script>
@@ -74,6 +76,7 @@
 <body>
 <button id="loginbutton" class="btn btn-primary" style="margin-left: 15%;margin-top: 5%;width: 40%;height: 14%;"><img src="linkedin.png"/>Login with linkedIn</button>
 <div id="profiles"></div>
+<span id="messagespan"></span>
 <div id="container" class="container" style="min-height:80%;">
 </div>
 </body>
