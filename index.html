@@ -32,6 +32,7 @@
 <head>
     <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="highcharts.js"></script>
     <title>LinkedIn JavaScript API Hello World</title>
 
     <!-- 1. Include the LinkedIn JavaScript API and define a onLoad callback function -->
@@ -88,12 +89,51 @@
                intermediateJsonArray.push({"name":uniqueArray[j],"count":counts[uniqueArray[j]]})
             }
             var resultArray = intermediateJsonArray.sort(function(a,b){return b.count - a.count;})
+            var chartInput = resultArray.map(function(data){return [data.name,data.count];})
+            drawChart(input);
         }
     </script>
 </head>
 <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
-
 <body>
 <div id="profiles"></div>
+<div id="container" style="height:400px;">
 </div>
 </body>
+<script type="text/javascript">
+function drawChart(input){
+    $('#container').highcharts({
+        credits:false,
+        chart: {
+            plotBackgroundColor: null,
+            plotBorderWidth: 1,//null,
+            plotShadow: false
+        },
+        title: {
+            text: 'Browser market shares at a specific website, 2014'
+        },
+        tooltip: {
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                dataLabels: {
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+                    }
+                }
+            }
+        },
+        series: [{
+            type: 'pie',
+            name: 'Browser share',
+            data: input
+        }]
+    });
+}
+</script>
+</html>
