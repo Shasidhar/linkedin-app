@@ -20,7 +20,7 @@
         };
         // 2. Runs when the JavaScript framework is loaded
         function onLinkedInLoad() {
-                $('a[id*=li_ui_li_gen_]').css({marginBottom:'20px'}).html('<img src="/images/shared/linkedin-register-large.png" height="31" width="200" border="0" />');    
+                $('a[id*=li_ui_li_gen_]').css({marginBottom:'20px'});    
             IN.Event.on(IN, "auth", onLinkedInAuth);
         }
 
