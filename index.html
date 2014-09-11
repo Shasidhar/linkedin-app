@@ -34,7 +34,7 @@
         // 2. Runs when the viewer has authenticated
         function onLinkedInAuth() {
             $("#loginbutton").remove();
-            $('#messagespan').html("Fetching your connection from LinkedIn");
+            $('#messagespan').html("Fetching your connections from LinkedIn");
             IN.API.Connections("me")
                     .fields("firstName", "lastName", "industry","positions:(company)")
                     .result(displayProfiles);
@@ -90,7 +90,7 @@ function drawChart(input){
             plotShadow: false
         },
         title: {
-            text: 'Distribution of your connections company wise in LinkedIn'
+            text: 'Distribution of your connections, company wise in LinkedIn'
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
